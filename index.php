@@ -13,7 +13,7 @@ class Worker {
 	return $this->name;
     }
     public function setAge($newAge){
-        if ($newAge >= 18) {
+	if ($this->checkAge($newAge)) {
             $this->age = $newAge;
             echo "Возраст изменен на " . $newAge . "<br>";
         } else {
@@ -30,8 +30,8 @@ class Worker {
 	  }
 	  return $total;
     }
-    public function checkAge(){
-	if ($this->age > 18) {
+    private function checkAge($age){
+	if ($age >= 18) {
         return true;
     } else {
         return false;
@@ -52,8 +52,6 @@ $sumAge = $worker1->getAge() + $worker2->getAge();
 echo "Сумма зарплат через getSalary(): " . $totalSalary . " руб.<br>";
 echo "Сумма возрастов: " . $sumAge . " лет.<br>";
 
-echo "Работник 2 (30 лет): checkAge() = " .
- ($worker2->checkAge() ? "true (больше 18)" : "false (не больше 18)") . "<br>";
 
 echo "Меняем возраст worker1 на 16:<br>";
 $worker1->setAge(16);
